@@ -6,7 +6,11 @@ android TT编译环境要求
 
 <img src="https://github.com/hd1df0011/TeamTalk/blob/master/android/welcome.jpg" width="300" hegiht="150" align=left />
 <img src="https://github.com/hd1df0011/TeamTalk/blob/master/android/login.png" width="300" hegiht="150" align=center />
-![image](https://github.com/hd1df0011/TeamTalk/blob/master/android/welcome.jpg = 200x)![image](https://github.com/hd1df0011/TeamTalk/blob/master/android/login.png = 200x)![image](https://github.com/hd1df0011/TeamTalk/blob/master/android/system_settings.png = 200x)![image](https://github.com/hd1df0011/TeamTalk/blob/master/android/session.png =200x)![image](https://github.com/hd1df0011/TeamTalk/blob/master/android/addressbook.png =200x)![image](https://github.com/hd1df0011/TeamTalk/blob/master/android/my.png =200x)
+<img src="https://github.com/hd1df0011/TeamTalk/blob/master/android/system_settings.png" width="300" hegiht="150" align=right />
+
+<img src="https://github.com/hd1df0011/TeamTalk/blob/master/android/session.png" width="300" hegiht="150" align=left />
+<img src="https://github.com/hd1df0011/TeamTalk/blob/master/android/addressbook.png" width="300" hegiht="150" align=center />
+<img src="https://github.com/hd1df0011/TeamTalk/blob/master/android/my.png" width="300" hegiht="150" align=right />
 
 
 
