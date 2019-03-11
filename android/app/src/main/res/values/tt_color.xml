@@ -51,10 +51,19 @@
     <!-- group manager -->
     <color name="group_manager_group_title">#010101</color>
     <color name="group_manager_user_title">#666666</color>
-    <color name="list_item_sel_color">#eaeaea</color>
+    <color name="list_item_sel_color">#18191D</color>
 
     <!--user detail-->
     <color name="user_detail_base">#ececec</color>
     <color name="pickimage_item_bg">#ffffff</color>
+
+	<!--login_bg-->
+    <color name="login_bg"></color>
+
+	<color name="colorPrimary">#3F51B5</color>
+	<color name="colorPrimaryDark">#303F9F</color>
+	<color name="colorAccent">#FF4081</color>
+	<color name="bg">#18191D</color>
+	<color name="kj">#2A2B31</color>
 
 </resources>

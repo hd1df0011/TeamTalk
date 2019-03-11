@@ -34,6 +34,20 @@
     <string name="choose_contact">选择联系人</string>
     <string name="switch_login_server">切换登陆服务器</string>
     <string name="switch_login_server_title">输入登陆服务器地址</string>
-    
+	<string name="lowpower">仅网络</string>
+	<string name="onlydevice">仅设备</string>
+	<string name="highprecision">高精度</string>
+	<string name="command_dispatch">指挥调度</string>
+	<string name="video_back">视频回传</string>
+	<string name="cluster_intercom">集群对讲</string>
+	<string name="data_collection">数据采集</string>
+	<string name="near_probe">附近探头</string>
+	<string name="sos_alarm">SOS警报</string>
+	<string name="version">0.5.1</string>
+	<string name="after_email">support@support.com</string>
+	<string name="after_sale">13328042589</string>
+	<string name="FAQ">常见问题(FAQ)</string>
+	<string name="logVersion">版本号 V0.5.1</string>
+	<string name="modifypasswd">密码修改</string>
 
 </resources>

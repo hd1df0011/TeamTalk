@@ -332,7 +332,7 @@ public class IMUIHelper {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					view.setBackgroundColor(Color.rgb(1, 175, 244));
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					view.setBackgroundColor(Color.rgb(255, 255, 255));
+					view.setBackgroundColor(Color.rgb(43, 43, 49));
 				}
 				return false;
 			}

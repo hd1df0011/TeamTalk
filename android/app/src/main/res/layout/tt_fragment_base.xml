@@ -2,23 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#2B2B31"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/topbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/top_bar_default_height"
-        android:background="@drawable/tt_top_default_bk"
-        android:paddingLeft="15dp"
-            android:paddingRight="15dp" >
+	<FrameLayout
+		android:id="@+id/topbar"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/top_bar_default_height"
+		android:background="#2B2B31"
+		android:paddingLeft="15dp"
+		android:paddingRight="15dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            
             android:id="@+id/top_left_container" >
 
             <ImageView
@@ -43,8 +42,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+			android:background="#2B2B31"
             android:gravity="center" >
-
             <TextView
                 android:id="@+id/base_fragment_title"
                 android:layout_width="wrap_content"
@@ -53,13 +52,11 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="@dimen/top_title_size"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:textStyle="italic" />
-
-            
 
             <com.mogujie.tt.ui.widget.SearchEditText
                 android:id="@+id/chat_title_search"
@@ -68,7 +65,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="30dp"
-                android:background="@drawable/tt_top_search_bg"
+                android:background="#2B2B31"
                 android:drawableLeft="@drawable/tt_search"
                 android:drawablePadding="10dp"
                 android:gravity="left|center_vertical"
@@ -101,7 +98,7 @@
         android:id="@+id/contactTopBar"
         android:layout_width="match_parent"
         android:layout_height="39dp"
-        android:background="@drawable/tt_top_default_bk" 
+        android:background="#2B2B31"
         android:visibility="gone">
     	<com.mogujie.tt.ui.widget.TopTabButton
 	        android:id="@+id/contact_tile"
@@ -119,25 +116,37 @@
     <FrameLayout
         android:id="@+id/searchbar"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:background="@android:color/white"
-        android:padding="8dp"
+        android:layout_height="50dp"
+		android:background="#18191D"
         android:visibility="gone">
 
         <com.mogujie.tt.ui.widget.DrawableCenterEditText
             android:id="@+id/search_input"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/tt_top_search_bg"
-            android:drawableLeft="@drawable/tt_top_search"
-            android:drawablePadding="9dp"
-            android:ellipsize="end"
-            android:hint="@string/menu_search"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:textColorHint="#9a9b9c"
-            android:textSize="14sp" />
+            android:background="@drawable/fragment_weixin_framlayout_bg"
+            android:gravity="top|left"
+			android:drawableLeft="@drawable/tt_search"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginLeft="3dp"
+			android:focusable="true"
+			android:hint="搜索"
+			android:textColorHint="#0080FF"
+			android:paddingLeft="30dp"
+			android:paddingRight="30dp"
+			android:textColor="#444"
+			android:singleLine="true"
+			android:maxLength="20"
+			android:textSize="14sp"
+			/>
+
+		<Button
+			android:visibility="gone"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right|center_vertical"
+			android:layout_marginRight="30dp"
+			android:background="@drawable/fragment_weixin_voice_button"
+			/>
         
     </FrameLayout>
 	<View

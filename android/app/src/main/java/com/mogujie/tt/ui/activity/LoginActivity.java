@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ import com.mogujie.tt.DB.sp.SystemConfigSp;
 import com.mogujie.tt.R;
 import com.mogujie.tt.config.IntentConstant;
 import com.mogujie.tt.config.UrlConstant;
+import com.mogujie.tt.ui.custom.ClearableEditTextWithIcon;
 import com.mogujie.tt.utils.IMUIHelper;
 import com.mogujie.tt.imservice.event.LoginEvent;
 import com.mogujie.tt.imservice.event.SocketEvent;
@@ -49,16 +52,19 @@ import de.greenrobot.event.EventBus;
  * 3. 保存登陆状态
  */
 public class LoginActivity extends TTBaseActivity {
-
+	private static final String TAG = "LoginActivity";
     private Logger logger = Logger.getLogger(LoginActivity.class);
     private Handler uiHandler = new Handler();
     private EditText mNameView;
     private EditText mPasswordView;
+	private CheckBox Checkbox;               //记住密码
     private View loginPage;
     private View splashPage;
     private View mLoginStatusView;
-    private TextView mSwitchLoginServer;
+    private TextView settings;
     private InputMethodManager intputManager;
+	private String IP;                       //IP
+	private String Port;                        //端口
 
 
     private IMService imService;
@@ -160,55 +166,62 @@ public class LoginActivity extends TTBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         intputManager = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
         logger.d("login#onCreate");
-
         SystemConfigSp.instance().init(getApplicationContext());
-        if (TextUtils.isEmpty(SystemConfigSp.instance().getStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER))) {
-            SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER, UrlConstant.ACCESS_MSG_ADDRESS);
+        if (TextUtils.isEmpty(SystemConfigSp.instance().getStrConfig(SystemConfigSp.SysCfgDimension.IP))) {
+        	SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.IP, UrlConstant.SERVER_IP);
+			SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.PORT, UrlConstant.SERVER_PORT);
+            SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER, UrlConstant.HEADER +
+					SystemConfigSp.instance().getStrConfig(SystemConfigSp.SysCfgDimension.IP) + ":"
+				+ SystemConfigSp.instance().getStrConfig(SystemConfigSp.SysCfgDimension.PORT)+ UrlConstant.END
+				);
         }
-
         imServiceConnector.connect(LoginActivity.this);
         EventBus.getDefault().register(this);
 
-        setContentView(R.layout.tt_activity_login);
-        mSwitchLoginServer = (TextView)findViewById(R.id.sign_switch_login_server);
-        mSwitchLoginServer.setOnClickListener(new View.OnClickListener(){
+        setContentView(R.layout.tt_activity_login1);
+		settings = (TextView)findViewById(R.id.settings);
+		Checkbox = findViewById(R.id.checkbox);
+		Checkbox.setChecked(true);
+		settings.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(LoginActivity.this, android.R.style.Theme_Holo_Light_Dialog));
-                LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View dialog_view = inflater.inflate(R.layout.tt_custom_dialog, null);
-                final EditText editText = (EditText)dialog_view.findViewById(R.id.dialog_edit_content);
-                editText.setText(SystemConfigSp.instance().getStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER));
-                TextView textText = (TextView)dialog_view.findViewById(R.id.dialog_title);
-                textText.setText(R.string.switch_login_server_title);
-                builder.setView(dialog_view);
-                builder.setPositiveButton(getString(R.string.tt_ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        if(!TextUtils.isEmpty(editText.getText().toString().trim()))
-                        {
-                            SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER,editText.getText().toString().trim());
-                            dialog.dismiss();
-                        }
-                    }
-                });
-                builder.setNegativeButton(getString(R.string.tt_cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.show();
+				Intent intent1 = new Intent();
+				intent1.setClass(LoginActivity.this, MoreActivity.class);
+				startActivityForResult(intent1,1);//请求参数设为1
+//                AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(LoginActivity.this, android.R.style.Theme_Holo_Light_Dialog));
+//                LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                View dialog_view = inflater.inflate(R.layout.tt_custom_dialog, null);
+//                final EditText editText = (EditText)dialog_view.findViewById(R.id.dialog_edit_content);
+//                editText.setText(SystemConfigSp.instance().getStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER));
+//                TextView textText = (TextView)dialog_view.findViewById(R.id.dialog_title);
+//                textText.setText(R.string.switch_login_server_title);
+//                builder.setView(dialog_view);
+//                builder.setPositiveButton(getString(R.string.tt_ok), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        if(!TextUtils.isEmpty(editText.getText().toString().trim()))
+//                        {
+//                            SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER,editText.getText().toString().trim());
+//                            dialog.dismiss();
+//                        }
+//                    }
+//                });
+//                builder.setNegativeButton(getString(R.string.tt_cancel), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//                builder.show();
             }
         });
 
-        mNameView = (EditText) findViewById(R.id.name);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mNameView = findViewById(R.id.name);
+        mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -412,4 +425,26 @@ public class LoginActivity extends TTBaseActivity {
         mLoginStatusView.setVisibility(View.GONE);
         Toast.makeText(this, errorTip, Toast.LENGTH_SHORT).show();
     }
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode)
+		{
+			case 1:
+				if (resultCode==RESULT_OK)
+				{
+					IP = data.getStringExtra("service_ip");
+					Port = data.getStringExtra("service_port");
+					Log.d(TAG, "onActivityResult: IP = " + IP);
+					Log.d(TAG, "onActivityResult: PORT = " + Port);
+					SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.IP, IP);
+					SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.PORT, Port);
+					SystemConfigSp.instance().setStrConfig(SystemConfigSp.SysCfgDimension.LOGINSERVER, UrlConstant.HEADER +
+						IP + ":"
+						+ Port+ UrlConstant.END
+					);
+				}
+				break;
+		}
+	}
 }

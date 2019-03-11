@@ -161,7 +161,7 @@ public abstract class TTBaseFragment extends Fragment {
 		if (resID <= 0) {
 			return;
 		}
-		topBar.setBackgroundResource(resID);
+		//topBar.setBackgroundResource(resID);
 	}
 
     protected void hideTopBar()

@@ -1,12 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "27.0.3"
-
-    defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 21
+    compileSdkVersion 26
+	useLibrary 'org.apache.http.legacy'
+	defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 26
         versionCode 5
         versionName "2.0.0"
     }
@@ -28,5 +27,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:21.+'
+	implementation 'com.android.support:support-v4:26.+'
 }

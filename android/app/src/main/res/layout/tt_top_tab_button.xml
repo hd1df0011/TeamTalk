@@ -1,13 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+	android:background="#2B2B31">
 
     <Button
         android:id="@+id/all_btn"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/tt_contact_top_left_sel"
+        android:background="#2B2B31"
         android:gravity="center"
         android:text="@string/contact_all"
         android:textColor="@android:color/white"
@@ -18,7 +19,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-5dp"
-        android:background="@drawable/tt_contact_top_right_nor"
+        android:background="#2B2B31"
         android:gravity="center"
         android:text="@string/contact_department"
         android:textColor="@color/default_blue_color"

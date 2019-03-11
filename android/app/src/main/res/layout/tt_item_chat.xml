@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/tt_list_item_bk"
+	android:background="#2B2B31"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="68dp"
         android:gravity="center_vertical"
+		android:background="#2B2B31"
         >
 
         <com.mogujie.tt.ui.widget.IMBaseImageView
@@ -43,13 +44,13 @@
             android:layout_alignTop="@id/contact_portrait"
             android:layout_toRightOf="@id/contact_portrait"
             android:layout_marginLeft="11dp"
-            android:background="@android:color/transparent"
+			android:background="@android:color/transparent"
             android:ellipsize="end"
             android:includeFontPadding="false"
             android:maxEms="12"
             android:paddingTop="3dp"
             android:singleLine="true"
-            android:textColor="@color/contact_name_color"
+			android:textColor="#FFFFFF"
             android:textSize="17sp" />
 
         <TextView
@@ -89,11 +90,15 @@
             android:visibility="gone"/>
     </RelativeLayout>
 	<View
-       	android:layout_width="wrap_content"
-       	android:layout_height="0.5dp"
-       	android:layout_marginLeft="10dp"
-       	android:paddingTop="1dp"
-       	android:background="@drawable/tt_divide_line" />
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/cutoffrule" />
+	<!--<View-->
+       	<!--android:layout_width="wrap_content"-->
+       	<!--android:layout_height="0.5dp"-->
+       	<!--android:layout_marginLeft="10dp"-->
+       	<!--android:paddingTop="1dp"-->
+       	<!--android:background="@drawable/tt_divide_line" />-->
     <!-- <TextView
         android:id="@+id/message_divider_footer"
         android:layout_width="fill_parent"

@@ -62,8 +62,8 @@ public class TopTabButton extends FrameLayout {
                 handler.sendMessage(message);
 
                 setSelTextColor(1);
-                tabDepartmentBtn.setBackgroundResource(R.drawable.tt_contact_top_right_sel);
-                tabALLBtn.setBackgroundResource(R.drawable.tt_contact_top_left_nor);
+//                tabDepartmentBtn.setBackgroundResource(R.drawable.tt_contact_top_right_sel);
+//                tabALLBtn.setBackgroundResource(R.drawable.tt_contact_top_left_nor);
             }
         });
 
@@ -79,8 +79,8 @@ public class TopTabButton extends FrameLayout {
                 handler.sendMessage(message);
 
                 setSelTextColor(0);
-                tabALLBtn.setBackgroundResource(R.drawable.tt_contact_top_left_sel);
-                tabDepartmentBtn.setBackgroundResource(R.drawable.tt_contact_top_right_nor);
+//                tabALLBtn.setBackgroundResource(R.drawable.tt_contact_top_left_sel);
+//                tabDepartmentBtn.setBackgroundResource(R.drawable.tt_contact_top_right_nor);
             }
         });
 

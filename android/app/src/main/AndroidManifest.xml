@@ -1,22 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mogujie.tt">
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.mogujie.tt">
 
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<!-- Needed to allow Linphone to install on tablets, since android.permission.CALL_PHONE implies android.hardware.telephony is required -->
+	<uses-feature
+		android:name="android.hardware.telephony"
+		android:required="false" />
+
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<!-- Needed to allow Linphone to install on tablets, since android.permission.CAMERA implies android.hardware.camera and android.hardware.camera.autofocus are required -->
+	<uses-feature
+		android:name="android.hardware.camera"
+		android:required="false" />
+
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<!-- Needed to use our own Contact editor -->
+	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
+	<!-- Needed to route the audio to the bluetooth headset if available -->
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.BROADCAST_STICKY" />
+	<!-- Needed to pre fill the wizard email field (only if enabled in custom settings) -->
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+	<uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+	<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+
+
+	<!--下载文件权限-->
+	<uses-permission android:name="ACCESS_DOWNLOAD_MANAGER" />
+	<uses-permission android:name="DOWNLOAD_WITHOUT_NOTTFICATION" />
+
+
+	<!-- 这个权限用于进行网络定位 -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<!-- 这个权限用于访问GPS定位 -->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+	<!-- ****************** 鹰眼****************************************** -->
+	<!-- 用于优化GPS定位 -->
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<!-- ************************************************************ -->
+
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+	<!-- 在 屏幕最顶部显示addview-->
+	<uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+	<!--获取一个时间段内的应用统计信息-->
+	<uses-permission  android:name="android.permission.PACKAGE_USAGE_STATS"
+		tools:ignore="ProtectedPermissions" />
+
+	<!--前后台的切换-->
+	<uses-permission android:name="android.permission.GET_TASKS"/>
+	<uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.permission.GET_TOP_ACTIVITY_INFO"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.permission.REORDER_TASKS"/>
+	<uses-permission android:name="android.permission.STOP_APP_SWITCHES"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+	<!-- SDCard中创建与删除文件权限 -->
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+		tools:ignore="ProtectedPermissions" />
+
+	<!--下载文件权限-->
+	<uses-permission android:name="ACCESS_DOWNLOAD_MANAGER" />
+	<uses-permission android:name="DOWNLOAD_WITHOUT_NOTTFICATION" />
+
+
+	<!-- 这个权限用于进行网络定位 -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<!-- 这个权限用于访问GPS定位 -->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+	<!-- ****************** 鹰眼****************************************** -->
+	<!-- 用于优化GPS定位 -->
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<!-- ************************************************************ -->
+	<!-- 在 屏幕最顶部显示addview-->
+	<uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+	<!--获取一个时间段内的应用统计信息-->
+	<uses-permission  android:name="android.permission.PACKAGE_USAGE_STATS"
+		tools:ignore="ProtectedPermissions" />
+
+	<!--前后台的切换-->
+	<uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.permission.GET_TOP_ACTIVITY_INFO"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.permission.REORDER_TASKS"/>
+	<uses-permission android:name="android.permission.STOP_APP_SWITCHES"
+		tools:ignore="ProtectedPermissions" />
+	<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+
+	<!--APP未读消息角标-->
+	<uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+
 
     <supports-screens
         android:anyDensity="true"
@@ -150,6 +251,8 @@
             >
         </activity>
 
+		<activity android:name=".ui.activity.MoreActivity"
+			android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

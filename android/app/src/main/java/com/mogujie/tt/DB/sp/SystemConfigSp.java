@@ -74,6 +74,8 @@ public class SystemConfigSp {
         DISCOVERYURI,
         LOGINSERVER,
         DISCOVERYDATA,
-        MSFSSERVER
+        MSFSSERVER,
+		IP,
+		PORT
     }
 }
